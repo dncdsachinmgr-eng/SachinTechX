@@ -1,289 +1,276 @@
-document.addEventListener("DOMContentLoaded", function () {
+/* =========================================
+   SACHINTECHX — MAIN JAVASCRIPT
+========================================= */
 
 
-    /* =========================
-       BRANCH PAGE DIGITAL DOOR
-    ========================= */
+/* =========================================
+   WELCOME SCREEN
+========================================= */
 
-    const branchDoor =
-        document.querySelector(".branch-door");
+const welcomeMessage = "WELCOME IN SACHINTECHX";
 
-
-    if (branchDoor) {
-
-        setTimeout(function () {
-
-            branchDoor.classList.add("open");
-
-        }, 300);
-
-    }
+const subtitleMessage =
+    "Your journey into technology starts here.";
 
 
+const welcomeText =
+    document.getElementById("welcome-text");
 
-    /* =========================
-       AI TOOLS SEARCH
-    ========================= */
+const welcomeSubtitle =
+    document.getElementById("welcome-subtitle");
 
-    const searchInput =
-        document.getElementById("toolSearch");
+const welcomeScreen =
+    document.getElementById("welcome-screen");
 
-    const categories =
-        document.querySelectorAll(".category");
-
-    const toolCards =
-        document.querySelectorAll(".tool-box");
-
-    const noResults =
-        document.getElementById("noResults");
+const homePage =
+    document.getElementById("home-page");
 
 
-    function filterTools() {
+let welcomeIndex = 0;
 
-        if (!searchInput) {
-            return;
-        }
+let subtitleIndex = 0;
 
 
-        const searchText =
-            searchInput.value
-            .toLowerCase()
-            .trim();
+/* =========================================
+   TYPE WELCOME MESSAGE
+========================================= */
 
+function typeWelcome() {
 
-        const activeCategory =
-            document
-            .querySelector(".category.active")
-            ?.dataset.category || "all";
+    if (welcomeIndex < welcomeMessage.length) {
 
+        welcomeText.textContent +=
+            welcomeMessage.charAt(welcomeIndex);
 
-        let visibleTools = 0;
+        welcomeIndex++;
 
+        setTimeout(typeWelcome, 80);
 
-        toolCards.forEach(function (card) {
+    } else {
 
-            const name =
-                card.dataset.name
-                .toLowerCase();
-
-            const category =
-                card.dataset.category;
-
-
-            const matchesSearch =
-                name.includes(searchText);
-
-
-            const matchesCategory =
-                activeCategory === "all" ||
-                category === activeCategory;
-
-
-            if (
-                matchesSearch &&
-                matchesCategory
-            ) {
-
-                card.style.display =
-                    "block";
-
-                visibleTools++;
-
-            } else {
-
-                card.style.display =
-                    "none";
-
-            }
-
-        });
-
-
-        if (noResults) {
-
-            if (visibleTools === 0) {
-
-                noResults.style.display =
-                    "block";
-
-            } else {
-
-                noResults.style.display =
-                    "none";
-
-            }
-
-        }
+        setTimeout(typeSubtitle, 500);
 
     }
 
+}
 
-    if (searchInput) {
 
-        searchInput.addEventListener(
-            "input",
-            filterTools
-        );
+/* =========================================
+   TYPE SUBTITLE
+========================================= */
+
+function typeSubtitle() {
+
+    if (subtitleIndex < subtitleMessage.length) {
+
+        welcomeSubtitle.textContent +=
+            subtitleMessage.charAt(subtitleIndex);
+
+        subtitleIndex++;
+
+        setTimeout(typeSubtitle, 45);
+
+    } else {
+
+        setTimeout(showHome, 1800);
 
     }
 
-
-    categories.forEach(function (button) {
-
-        button.addEventListener(
-            "click",
-            function () {
-
-                categories.forEach(
-                    function (item) {
-
-                        item.classList
-                            .remove("active");
-
-                    }
-                );
+}
 
 
-                button.classList
-                    .add("active");
+/* =========================================
+   SHOW HOME PAGE
+========================================= */
+
+function showHome() {
+
+    welcomeScreen.classList.add("fade-out");
 
 
-                filterTools();
+    setTimeout(function () {
 
-            }
-        );
+        welcomeScreen.style.display = "none";
 
-    });
+        homePage.classList.add("show");
+
+        startMatrix();
+
+    }, 1000);
+
+}
 
 
+/* =========================================
+   EXPLORE BUTTON
+========================================= */
 
-    /* =========================
-       MATRIX RAIN
-    ========================= */
+function openExplore() {
+
+    window.location.href = "explore.html";
+
+}
+
+
+/* =========================================
+   MATRIX ANIMATION
+========================================= */
+
+function startMatrix() {
 
     const canvas =
         document.getElementById("matrix");
 
-
-    if (canvas) {
-
-        const ctx =
-            canvas.getContext("2d");
+    if (!canvas) return;
 
 
-        const characters =
-            "アカサタナハマヤラワ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const ctx =
+        canvas.getContext("2d");
 
 
-        const fontSize = 16;
+    let width =
+        window.innerWidth;
+
+    let height =
+        window.innerHeight;
 
 
-        let columns;
+    canvas.width = width;
 
-        let drops;
+    canvas.height = height;
 
 
-        function resizeMatrix() {
+    const characters =
+        "01ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
-            canvas.width =
+
+    const fontSize = 16;
+
+
+    let columns =
+        Math.floor(width / fontSize);
+
+
+    let drops =
+        new Array(columns).fill(1);
+
+
+    function drawMatrix() {
+
+        ctx.fillStyle =
+            "rgba(0, 0, 0, 0.08)";
+
+        ctx.fillRect(
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        );
+
+
+        ctx.fillStyle =
+            "#00ff88";
+
+        ctx.font =
+            fontSize + "px monospace";
+
+
+        for (
+            let i = 0;
+            i < drops.length;
+            i++
+        ) {
+
+            const character =
+                characters.charAt(
+                    Math.floor(
+                        Math.random() *
+                        characters.length
+                    )
+                );
+
+
+            ctx.fillText(
+                character,
+                i * fontSize,
+                drops[i] * fontSize
+            );
+
+
+            if (
+                drops[i] * fontSize >
+                canvas.height &&
+                Math.random() > 0.975
+            ) {
+
+                drops[i] = 0;
+
+            }
+
+
+            drops[i]++;
+
+        }
+
+    }
+
+
+    setInterval(
+        drawMatrix,
+        45
+    );
+
+
+    /* =====================================
+       RESIZE MATRIX
+    ===================================== */
+
+    window.addEventListener(
+        "resize",
+        function () {
+
+            width =
                 window.innerWidth;
 
-            canvas.height =
+            height =
                 window.innerHeight;
 
 
+            canvas.width =
+                width;
+
+            canvas.height =
+                height;
+
+
             columns =
-                Math.ceil(
-                    canvas.width /
-                    fontSize
+                Math.floor(
+                    width / fontSize
                 );
 
 
             drops =
-                Array(columns).fill(1);
+                new Array(columns)
+                    .fill(1);
 
         }
+    );
+
+}
 
 
-        resizeMatrix();
+/* =========================================
+   WEBSITE START
+========================================= */
 
+window.addEventListener(
+    "load",
+    function () {
 
-        window.addEventListener(
-            "resize",
-            resizeMatrix
-        );
-
-
-        function drawMatrix() {
-
-            ctx.fillStyle =
-                "rgba(2,4,3,0.08)";
-
-
-            ctx.fillRect(
-                0,
-                0,
-                canvas.width,
-                canvas.height
-            );
-
-
-            ctx.fillStyle =
-                "#00ff88";
-
-
-            ctx.font =
-                fontSize +
-                "px monospace";
-
-
-            for (
-                let i = 0;
-                i < columns;
-                i++
-            ) {
-
-                const text =
-                    characters[
-                        Math.floor(
-                            Math.random() *
-                            characters.length
-                        )
-                    ];
-
-
-                ctx.fillText(
-                    text,
-                    i * fontSize,
-                    drops[i] * fontSize
-                );
-
-
-                if (
-                    drops[i] *
-                    fontSize >
-                    canvas.height
-                    &&
-                    Math.random() > 0.975
-                ) {
-
-                    drops[i] = 0;
-
-                }
-
-
-                drops[i]++;
-
-            }
-
-        }
-
-
-        setInterval(
-            drawMatrix,
-            45
+        setTimeout(
+            typeWelcome,
+            700
         );
 
     }
-
-});
+);
