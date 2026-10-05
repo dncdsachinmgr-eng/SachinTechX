@@ -1,104 +1,271 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>AI.blog_</title>
+    <title>SachinTechX</title>
 
     <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
 
-    <!-- MATRIX BACKGROUND -->
-    <canvas id="matrix"></canvas>
+    <!-- =========================
+         WELCOME SCREEN
+    ========================== -->
+    <div id="welcome-screen">
 
+        <div class="welcome-content">
 
-    <!-- NAVBAR -->
-    <nav class="navbar">
+            <div class="terminal-line">
+                <span class="terminal-symbol">></span>
+                <span id="welcome-text"></span>
+                <span class="cursor">_</span>
+            </div>
 
-        <div class="logo">
-            AI.blog_
-        </div>
-
-        <div class="nav-links">
-
-            <a href="index.html">
-                Home
-            </a>
-
-            <a href="tools.html">
-                AI Tools
-            </a>
-
-            <a href="tools.html">
-                Blogs
-            </a>
-
-            <a href="index.html">
-                About
-            </a>
+            <p id="welcome-subtitle"></p>
 
         </div>
 
-    </nav>
+    </div>
 
 
-    <!-- HERO -->
-    <main class="hero">
+    <!-- =========================
+         HOME PAGE
+    ========================== -->
+    <div id="home-page">
 
-        <div class="hero-badge">
-            ⚡ THE FUTURE IS INTELLIGENT
-        </div>
+        <!-- Matrix Background -->
+        <canvas id="matrix"></canvas>
 
-        <h1>
-            Welcome to
-            <span>
-                AI.blog_
-            </span>
-        </h1>
+        <!-- Main Content -->
+        <main class="home-content">
 
-        <p class="hero-description">
-            Explore Artificial Intelligence,
-            AI Tools, Technology and the future
-            of digital creativity.
-        </p>
+            <p class="small-text">WELCOME TO</p>
 
+            <h1>SACHIN<span>TECHX</span></h1>
 
-        <div class="hero-buttons">
+            <p class="description">
+                Explore Technology • AI • Coding • Creativity
+            </p>
 
-            <a href="tools.html"
-               class="primary-btn">
-                Explore AI →
-            </a>
+            <button onclick="openExplore()">
+                EXPLORE
+            </button>
 
-            <a href="tools.html"
-               class="secondary-btn">
-                Read Blogs
-            </a>
+        </main>
 
-        </div>
+    </div>
 
 
-        <div class="hero-status">
+    <script>
 
-            <span class="status-dot"></span>
+        /* =================================
+           WELCOME TYPING ANIMATION
+        ================================= */
 
-            SYSTEM ONLINE • AI KNOWLEDGE HUB
+        const welcomeText = "WELCOME IN SACHINTECHX";
+        const subtitleText = "Your journey into technology starts here.";
 
-        </div>
+        const welcomeElement =
+            document.getElementById("welcome-text");
 
-    </main>
+        const subtitleElement =
+            document.getElementById("welcome-subtitle");
+
+        const welcomeScreen =
+            document.getElementById("welcome-screen");
+
+        const homePage =
+            document.getElementById("home-page");
 
 
-    <script src="script.js"></script>
+        let textIndex = 0;
+
+
+        function typeWelcome() {
+
+            if (textIndex < welcomeText.length) {
+
+                welcomeElement.textContent +=
+                    welcomeText.charAt(textIndex);
+
+                textIndex++;
+
+                setTimeout(typeWelcome, 75);
+
+            } else {
+
+                setTimeout(typeSubtitle, 500);
+
+            }
+
+        }
+
+
+        let subtitleIndex = 0;
+
+
+        function typeSubtitle() {
+
+            if (subtitleIndex < subtitleText.length) {
+
+                subtitleElement.textContent +=
+                    subtitleText.charAt(subtitleIndex);
+
+                subtitleIndex++;
+
+                setTimeout(typeSubtitle, 45);
+
+            } else {
+
+                setTimeout(showHome, 1800);
+
+            }
+
+        }
+
+
+        function showHome() {
+
+            welcomeScreen.classList.add("fade-out");
+
+            setTimeout(() => {
+
+                welcomeScreen.style.display = "none";
+
+                homePage.classList.add("show");
+
+                startMatrix();
+
+            }, 1000);
+
+        }
+
+
+        /* =================================
+           EXPLORE BUTTON
+        ================================= */
+
+        function openExplore() {
+
+            window.location.href = "explore.html";
+
+        }
+
+
+        /* =================================
+           MATRIX ANIMATION
+        ================================= */
+
+        function startMatrix() {
+
+            const canvas =
+                document.getElementById("matrix");
+
+            const ctx =
+                canvas.getContext("2d");
+
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+
+            const letters =
+                "01ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+            const fontSize = 16;
+
+            const columns =
+                Math.floor(canvas.width / fontSize);
+
+            const drops =
+                Array(columns).fill(1);
+
+
+            function drawMatrix() {
+
+                ctx.fillStyle =
+                    "rgba(0, 0, 0, 0.08)";
+
+                ctx.fillRect(
+                    0,
+                    0,
+                    canvas.width,
+                    canvas.height
+                );
+
+
+                ctx.fillStyle = "#00ff88";
+
+                ctx.font =
+                    fontSize + "px monospace";
+
+
+                for (let i = 0; i < drops.length; i++) {
+
+                    const text =
+                        letters.charAt(
+                            Math.floor(
+                                Math.random() *
+                                letters.length
+                            )
+                        );
+
+                    ctx.fillText(
+                        text,
+                        i * fontSize,
+                        drops[i] * fontSize
+                    );
+
+
+                    if (
+                        drops[i] * fontSize >
+                        canvas.height &&
+                        Math.random() > 0.975
+                    ) {
+
+                        drops[i] = 0;
+
+                    }
+
+                    drops[i]++;
+
+                }
+
+            }
+
+
+            setInterval(drawMatrix, 40);
+
+
+            window.addEventListener(
+                "resize",
+                () => {
+
+                    canvas.width =
+                        window.innerWidth;
+
+                    canvas.height =
+                        window.innerHeight;
+
+                }
+            );
+
+        }
+
+
+        /* =================================
+           START
+        ================================= */
+
+        window.onload = () => {
+
+            setTimeout(typeWelcome, 700);
+
+        };
+
+    </script>
 
 </body>
-
 </html>
