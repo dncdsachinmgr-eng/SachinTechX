@@ -1,115 +1,7 @@
 /* =========================================
-   SACHINTECHX — MAIN JAVASCRIPT
+   SACHINTECHX
+   MAIN JAVASCRIPT
 ========================================= */
-
-
-/* =========================================
-   WELCOME SCREEN
-========================================= */
-
-const welcomeMessage = "WELCOME IN SACHINTECHX";
-
-const subtitleMessage =
-    "Your journey into technology starts here.";
-
-
-const welcomeText =
-    document.getElementById("welcome-text");
-
-const welcomeSubtitle =
-    document.getElementById("welcome-subtitle");
-
-const welcomeScreen =
-    document.getElementById("welcome-screen");
-
-const homePage =
-    document.getElementById("home-page");
-
-
-let welcomeIndex = 0;
-
-let subtitleIndex = 0;
-
-
-/* =========================================
-   TYPE WELCOME MESSAGE
-========================================= */
-
-function typeWelcome() {
-
-    if (welcomeIndex < welcomeMessage.length) {
-
-        welcomeText.textContent +=
-            welcomeMessage.charAt(welcomeIndex);
-
-        welcomeIndex++;
-
-        setTimeout(typeWelcome, 80);
-
-    } else {
-
-        setTimeout(typeSubtitle, 500);
-
-    }
-
-}
-
-
-/* =========================================
-   TYPE SUBTITLE
-========================================= */
-
-function typeSubtitle() {
-
-    if (subtitleIndex < subtitleMessage.length) {
-
-        welcomeSubtitle.textContent +=
-            subtitleMessage.charAt(subtitleIndex);
-
-        subtitleIndex++;
-
-        setTimeout(typeSubtitle, 45);
-
-    } else {
-
-        setTimeout(showHome, 1800);
-
-    }
-
-}
-
-
-/* =========================================
-   SHOW HOME PAGE
-========================================= */
-
-function showHome() {
-
-    welcomeScreen.classList.add("fade-out");
-
-
-    setTimeout(function () {
-
-        welcomeScreen.style.display = "none";
-
-        homePage.classList.add("show");
-
-        startMatrix();
-
-    }, 1000);
-
-}
-
-
-/* =========================================
-   EXPLORE BUTTON
-========================================= */
-
-function openExplore() {
-
-    window.location.href = "explore.html";
-
-}
 
 
 /* =========================================
@@ -136,7 +28,6 @@ function startMatrix() {
 
 
     canvas.width = width;
-
     canvas.height = height;
 
 
@@ -148,17 +39,19 @@ function startMatrix() {
 
 
     let columns =
-        Math.floor(width / fontSize);
+        Math.floor(
+            width / fontSize
+        );
 
 
     let drops =
         new Array(columns).fill(1);
 
 
-    function drawMatrix() {
+    function draw() {
 
         ctx.fillStyle =
-            "rgba(0, 0, 0, 0.08)";
+            "rgba(0,0,0,0.08)";
 
         ctx.fillRect(
             0,
@@ -216,14 +109,10 @@ function startMatrix() {
 
 
     setInterval(
-        drawMatrix,
+        draw,
         45
     );
 
-
-    /* =====================================
-       RESIZE MATRIX
-    ===================================== */
 
     window.addEventListener(
         "resize",
@@ -260,17 +149,310 @@ function startMatrix() {
 
 
 /* =========================================
-   WEBSITE START
+   WELCOME SCREEN
+========================================= */
+
+function startWelcome() {
+
+    const welcomeScreen =
+        document.getElementById(
+            "welcome-screen"
+        );
+
+
+    const welcomeText =
+        document.getElementById(
+            "welcome-text"
+        );
+
+
+    const subtitle =
+        document.getElementById(
+            "welcome-subtitle"
+        );
+
+
+    const homePage =
+        document.getElementById(
+            "home-page"
+        );
+
+
+    if (
+        !welcomeScreen ||
+        !welcomeText ||
+        !subtitle ||
+        !homePage
+    ) {
+
+        return;
+
+    }
+
+
+    const title =
+        "WELCOME IN SACHINTECHX";
+
+
+    const sub =
+        "Your journey into technology starts here.";
+
+
+    let i = 0;
+
+    let j = 0;
+
+
+    function typeTitle() {
+
+        if (i < title.length) {
+
+            welcomeText.textContent +=
+                title.charAt(i);
+
+            i++;
+
+            setTimeout(
+                typeTitle,
+                75
+            );
+
+        } else {
+
+            setTimeout(
+                typeSubtitle,
+                500
+            );
+
+        }
+
+    }
+
+
+    function typeSubtitle() {
+
+        if (j < sub.length) {
+
+            subtitle.textContent +=
+                sub.charAt(j);
+
+            j++;
+
+            setTimeout(
+                typeSubtitle,
+                40
+            );
+
+        } else {
+
+            setTimeout(
+                showHome,
+                1600
+            );
+
+        }
+
+    }
+
+
+    function showHome() {
+
+        welcomeScreen.classList.add(
+            "fade-out"
+        );
+
+
+        setTimeout(
+            function () {
+
+                welcomeScreen.style.display =
+                    "none";
+
+                homePage.classList.add(
+                    "show"
+                );
+
+            },
+            1000
+        );
+
+    }
+
+
+    setTimeout(
+        typeTitle,
+        700
+    );
+
+}
+
+
+/* =========================================
+   AI CHAT
+========================================= */
+
+function sendMessage() {
+
+    const input =
+        document.getElementById(
+            "chat-input"
+        );
+
+
+    const messages =
+        document.getElementById(
+            "chat-messages"
+        );
+
+
+    if (
+        !input ||
+        !messages
+    ) {
+
+        return;
+
+    }
+
+
+    const text =
+        input.value.trim();
+
+
+    if (!text) return;
+
+
+    /* USER MESSAGE */
+
+    const userMessage =
+        document.createElement(
+            "div"
+        );
+
+
+    userMessage.className =
+        "message user-message";
+
+
+    userMessage.innerHTML = `
+        <span class="message-label">
+            YOU
+        </span>
+
+        <p>
+            ${escapeHTML(text)}
+        </p>
+    `;
+
+
+    messages.appendChild(
+        userMessage
+    );
+
+
+    input.value = "";
+
+
+    messages.scrollTop =
+        messages.scrollHeight;
+
+
+    /* DEMO AI RESPONSE */
+
+    setTimeout(
+        function () {
+
+            const aiMessage =
+                document.createElement(
+                    "div"
+                );
+
+
+            aiMessage.className =
+                "message ai-message";
+
+
+            aiMessage.innerHTML = `
+                <span class="message-label">
+                    AI
+                </span>
+
+                <p>
+                    I'm ready to help.
+                    This AI interface is currently
+                    running in demo mode.
+                </p>
+            `;
+
+
+            messages.appendChild(
+                aiMessage
+            );
+
+
+            messages.scrollTop =
+                messages.scrollHeight;
+
+        },
+        700
+    );
+
+}
+
+
+/* =========================================
+   SECURITY
+========================================= */
+
+function escapeHTML(text) {
+
+    const div =
+        document.createElement(
+            "div"
+        );
+
+    div.textContent =
+        text;
+
+    return div.innerHTML;
+
+}
+
+
+/* =========================================
+   ENTER KEY FOR CHAT
+========================================= */
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (
+            event.key === "Enter" &&
+            document.activeElement &&
+            document.activeElement.id ===
+            "chat-input"
+        ) {
+
+            sendMessage();
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   START
 ========================================= */
 
 window.addEventListener(
     "load",
     function () {
 
-        setTimeout(
-            typeWelcome,
-            700
-        );
+        startMatrix();
+
+        startWelcome();
 
     }
 );
