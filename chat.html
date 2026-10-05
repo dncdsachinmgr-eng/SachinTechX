@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <title>AI Chat | AI.blog_</title>
+    <title>SachinTechX | AI Chat</title>
 
     <link rel="stylesheet" href="style.css">
 
@@ -16,16 +17,18 @@
 
 <body>
 
-    <!-- MATRIX BACKGROUND -->
+    <!-- MATRIX -->
     <canvas id="matrix"></canvas>
+
+    <div class="matrix-overlay"></div>
 
 
     <!-- NAVBAR -->
     <nav class="navbar">
 
-        <div class="logo">
-            AI.blog_
-        </div>
+        <a href="index.html" class="logo">
+            Sachin<span>TechX</span>
+        </a>
 
         <div class="nav-links">
 
@@ -34,15 +37,11 @@
             </a>
 
             <a href="tools.html">
-                AI Tools
+                Tools
             </a>
 
-            <a href="tools.html">
-                Blogs
-            </a>
-
-            <a href="index.html">
-                About
+            <a href="chat.html" class="active">
+                AI Chat
             </a>
 
         </div>
@@ -53,123 +52,53 @@
     <!-- CHAT PAGE -->
     <main class="chat-page">
 
+        <p class="page-label">
+            SACHINTECHX / AI SYSTEM
+        </p>
 
-        <div class="chat-hero">
+        <h1>
+            AI <span>CHAT</span>
+        </h1>
 
-            <div class="chat-icon">
-                🤖
-            </div>
-
-            <div class="hero-badge">
-                ⚡ AI CHAT
-            </div>
-
-            <h1>
-                AI
-                <span>
-                    Chat_
-                </span>
-            </h1>
-
-            <p>
-                Explore powerful AI chat assistants
-                for learning, writing, brainstorming
-                and everyday tasks.
-            </p>
-
-        </div>
+        <p class="page-description">
+            Your intelligent digital conversation space.
+        </p>
 
 
-        <section class="chat-content">
+        <!-- CHAT BOX -->
+        <section class="chat-container">
 
+            <div class="chat-header">
 
-            <div class="chat-info">
+                <div class="ai-status"></div>
 
-                <h2>
-                    What is AI Chat?
-                </h2>
+                <div>
+                    <strong>
+                        SachinTechX AI
+                    </strong>
 
-                <p>
-                    AI Chat tools allow you to communicate
-                    with artificial intelligence using
-                    natural language. You can ask questions,
-                    generate ideas, learn concepts and
-                    complete many different tasks.
-                </p>
+                    <small>
+                        ONLINE
+                    </small>
+                </div>
 
             </div>
 
 
-            <div class="chat-features">
+            <div
+                id="chat-messages"
+                class="chat-messages"
+            >
 
+                <div class="message ai-message">
 
-                <div class="chat-feature">
-
-                    <span>
-                        01
+                    <span class="message-label">
+                        AI
                     </span>
 
-                    <h3>
-                        Ask Questions
-                    </h3>
-
                     <p>
-                        Get explanations and answers
-                        to your questions.
-                    </p>
-
-                </div>
-
-
-                <div class="chat-feature">
-
-                    <span>
-                        02
-                    </span>
-
-                    <h3>
-                        Generate Ideas
-                    </h3>
-
-                    <p>
-                        Brainstorm ideas for projects,
-                        content and business.
-                    </p>
-
-                </div>
-
-
-                <div class="chat-feature">
-
-                    <span>
-                        03
-                    </span>
-
-                    <h3>
-                        Learn Faster
-                    </h3>
-
-                    <p>
-                        Understand difficult topics
-                        with AI-powered explanations.
-                    </p>
-
-                </div>
-
-
-                <div class="chat-feature">
-
-                    <span>
-                        04
-                    </span>
-
-                    <h3>
-                        Create Content
-                    </h3>
-
-                    <p>
-                        Generate drafts, outlines
-                        and creative content with AI.
+                        Hello! Welcome to SachinTechX AI.
+                        How can I help you?
                     </p>
 
                 </div>
@@ -177,25 +106,29 @@
             </div>
 
 
-            <div class="chat-action">
+            <div class="chat-input-area">
 
-                <h2>
-                    Ready to explore AI Chat?
-                </h2>
+                <input
+                    id="chat-input"
+                    type="text"
+                    placeholder="Type your message..."
+                    autocomplete="off"
+                >
 
-                <p>
-                    Choose an AI assistant and
-                    start exploring.
-                </p>
-
-                <button class="launch-btn">
-                    Launch AI Chat →
+                <button
+                    onclick="sendMessage()"
+                >
+                    SEND
                 </button>
 
             </div>
 
-
         </section>
+
+
+        <a href="tools.html" class="back-link">
+            ← BACK TO BRANCHES
+        </a>
 
     </main>
 
@@ -203,5 +136,4 @@
     <script src="script.js"></script>
 
 </body>
-
 </html>
