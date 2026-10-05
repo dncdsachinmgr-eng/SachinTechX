@@ -11,15 +11,13 @@
 
 <body>
 
-    <!-- =========================
-         WELCOME SCREEN
-    ========================== -->
-    <div id="welcome-screen">
+    <!-- WELCOME SCREEN -->
+    <section id="welcome-screen">
 
-        <div class="welcome-content">
+        <div class="welcome-box">
 
-            <div class="terminal-line">
-                <span class="terminal-symbol">></span>
+            <div class="welcome-title">
+                <span>&gt;</span>
                 <span id="welcome-text"></span>
                 <span class="cursor">_</span>
             </div>
@@ -28,246 +26,76 @@
 
         </div>
 
-    </div>
+    </section>
 
 
-    <!-- =========================
-         HOME PAGE
-    ========================== -->
-    <div id="home-page">
+    <!-- HOME PAGE -->
+    <section id="home-page">
 
-        <!-- Matrix Background -->
         <canvas id="matrix"></canvas>
 
-        <!-- Main Content -->
-        <main class="home-content">
+        <div class="matrix-overlay"></div>
 
-            <p class="small-text">WELCOME TO</p>
 
-            <h1>SACHIN<span>TECHX</span></h1>
+        <!-- NAVBAR -->
+        <nav class="navbar">
 
-            <p class="description">
-                Explore Technology • AI • Coding • Creativity
+            <a href="index.html" class="logo">
+                Sachin<span>TechX</span>
+            </a>
+
+            <div class="nav-links">
+
+                <a href="index.html">Home</a>
+
+                <a href="tools.html">Tools</a>
+
+                <a href="chat.html">AI Chat</a>
+
+            </div>
+
+        </nav>
+
+
+        <!-- HOME CONTENT -->
+        <main class="hero">
+
+            <p class="hero-label">
+                DIGITAL SPACE
             </p>
 
-            <button onclick="openExplore()">
-                EXPLORE
-            </button>
+            <h1>
+                SACHIN<span>TECHX</span>
+            </h1>
+
+            <p class="hero-description">
+                Technology • AI • Coding • Creativity
+            </p>
+
+            <p class="hero-text">
+                Welcome to my digital world.
+                Explore technology, AI tools, coding
+                and creative projects.
+            </p>
+
+
+            <a href="tools.html" class="neon-button">
+                <span>EXPLORE</span>
+                <span class="arrow">→</span>
+            </a>
 
         </main>
 
-    </div>
 
+        <div class="system-status">
+            <span></span>
+            SYSTEM ONLINE
+        </div>
 
-    <script>
+    </section>
 
-        /* =================================
-           WELCOME TYPING ANIMATION
-        ================================= */
 
-        const welcomeText = "WELCOME IN SACHINTECHX";
-        const subtitleText = "Your journey into technology starts here.";
-
-        const welcomeElement =
-            document.getElementById("welcome-text");
-
-        const subtitleElement =
-            document.getElementById("welcome-subtitle");
-
-        const welcomeScreen =
-            document.getElementById("welcome-screen");
-
-        const homePage =
-            document.getElementById("home-page");
-
-
-        let textIndex = 0;
-
-
-        function typeWelcome() {
-
-            if (textIndex < welcomeText.length) {
-
-                welcomeElement.textContent +=
-                    welcomeText.charAt(textIndex);
-
-                textIndex++;
-
-                setTimeout(typeWelcome, 75);
-
-            } else {
-
-                setTimeout(typeSubtitle, 500);
-
-            }
-
-        }
-
-
-        let subtitleIndex = 0;
-
-
-        function typeSubtitle() {
-
-            if (subtitleIndex < subtitleText.length) {
-
-                subtitleElement.textContent +=
-                    subtitleText.charAt(subtitleIndex);
-
-                subtitleIndex++;
-
-                setTimeout(typeSubtitle, 45);
-
-            } else {
-
-                setTimeout(showHome, 1800);
-
-            }
-
-        }
-
-
-        function showHome() {
-
-            welcomeScreen.classList.add("fade-out");
-
-            setTimeout(() => {
-
-                welcomeScreen.style.display = "none";
-
-                homePage.classList.add("show");
-
-                startMatrix();
-
-            }, 1000);
-
-        }
-
-
-        /* =================================
-           EXPLORE BUTTON
-        ================================= */
-
-        function openExplore() {
-
-            window.location.href = "explore.html";
-
-        }
-
-
-        /* =================================
-           MATRIX ANIMATION
-        ================================= */
-
-        function startMatrix() {
-
-            const canvas =
-                document.getElementById("matrix");
-
-            const ctx =
-                canvas.getContext("2d");
-
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-
-
-            const letters =
-                "01ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-            const fontSize = 16;
-
-            const columns =
-                Math.floor(canvas.width / fontSize);
-
-            const drops =
-                Array(columns).fill(1);
-
-
-            function drawMatrix() {
-
-                ctx.fillStyle =
-                    "rgba(0, 0, 0, 0.08)";
-
-                ctx.fillRect(
-                    0,
-                    0,
-                    canvas.width,
-                    canvas.height
-                );
-
-
-                ctx.fillStyle = "#00ff88";
-
-                ctx.font =
-                    fontSize + "px monospace";
-
-
-                for (let i = 0; i < drops.length; i++) {
-
-                    const text =
-                        letters.charAt(
-                            Math.floor(
-                                Math.random() *
-                                letters.length
-                            )
-                        );
-
-                    ctx.fillText(
-                        text,
-                        i * fontSize,
-                        drops[i] * fontSize
-                    );
-
-
-                    if (
-                        drops[i] * fontSize >
-                        canvas.height &&
-                        Math.random() > 0.975
-                    ) {
-
-                        drops[i] = 0;
-
-                    }
-
-                    drops[i]++;
-
-                }
-
-            }
-
-
-            setInterval(drawMatrix, 40);
-
-
-            window.addEventListener(
-                "resize",
-                () => {
-
-                    canvas.width =
-                        window.innerWidth;
-
-                    canvas.height =
-                        window.innerHeight;
-
-                }
-            );
-
-        }
-
-
-        /* =================================
-           START
-        ================================= */
-
-        window.onload = () => {
-
-            setTimeout(typeWelcome, 700);
-
-        };
-
-    </script>
     <script src="script.js"></script>
-    
 
 </body>
 </html>
