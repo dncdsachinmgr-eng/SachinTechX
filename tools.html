@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <title>AI Tools | AI.blog_</title>
+    <title>SachinTechX | Tools</title>
 
     <link rel="stylesheet" href="style.css">
 
@@ -16,30 +17,18 @@
 
 <body>
 
-    <!-- MATRIX BACKGROUND -->
+    <!-- MATRIX -->
     <canvas id="matrix"></canvas>
 
-
-    <!-- DIGITAL DOOR INTRO -->
-    <div class="branch-door">
-
-        <div class="branch-door-left"></div>
-
-        <div class="branch-door-right"></div>
-
-        <div class="branch-door-text">
-            ACCESSING AI...
-        </div>
-
-    </div>
+    <div class="matrix-overlay"></div>
 
 
     <!-- NAVBAR -->
     <nav class="navbar">
 
-        <div class="logo">
-            AI.blog_
-        </div>
+        <a href="index.html" class="logo">
+            Sachin<span>TechX</span>
+        </a>
 
         <div class="nav-links">
 
@@ -47,16 +36,12 @@
                 Home
             </a>
 
-            <a href="tools.html">
-                AI Tools
+            <a href="tools.html" class="active">
+                Tools
             </a>
 
-            <a href="tools.html">
-                Blogs
-            </a>
-
-            <a href="index.html">
-                About
+            <a href="chat.html">
+                AI Chat
             </a>
 
         </div>
@@ -67,237 +52,138 @@
     <!-- TOOLS PAGE -->
     <main class="tools-page">
 
+        <p class="page-label">
+            SACHINTECHX / BRANCH
+        </p>
 
-        <div class="tools-header">
+        <h1>
+            CHOOSE YOUR
+            <span>PATH</span>
+        </h1>
 
-            <div class="hero-badge">
-                ⚡ AI SYSTEM ACCESS
-            </div>
+        <p class="page-description">
+            Enter a branch and explore the digital
+            world of SachinTechX.
+        </p>
 
-            <h1>
-                AI
-                <span>
-                    Tools_
+
+        <!-- BRANCHES -->
+        <section class="branch-grid">
+
+
+            <!-- AI -->
+            <a href="chat.html" class="branch-card">
+
+                <div class="branch-number">
+                    01
+                </div>
+
+                <div class="branch-icon">
+                    AI
+                </div>
+
+                <h2>
+                    AI CHAT
+                </h2>
+
+                <p>
+                    Explore an intelligent AI
+                    conversation experience.
+                </p>
+
+                <span class="branch-arrow">
+                    ENTER →
                 </span>
-            </h1>
 
-            <p>
-                Discover powerful AI tools for
-                creativity, productivity, learning
-                and digital business.
-            </p>
-
-        </div>
+            </a>
 
 
-        <!-- SEARCH -->
-        <div class="tools-search">
+            <!-- CODING -->
+            <div class="branch-card">
 
-            <span>
-                ⌕
-            </span>
+                <div class="branch-number">
+                    02
+                </div>
 
-            <input
-                type="text"
-                id="toolSearch"
-                placeholder="Search AI tools..."
-            >
-
-        </div>
-
-
-        <!-- CATEGORIES -->
-        <div class="tool-categories">
-
-            <button
-                class="category active"
-                data-category="all">
-                All
-            </button>
-
-            <button
-                class="category"
-                data-category="chat">
-                🤖 Chat
-            </button>
-
-            <button
-                class="category"
-                data-category="image">
-                🎨 Image
-            </button>
-
-            <button
-                class="category"
-                data-category="video">
-                🎬 Video
-            </button>
-
-            <button
-                class="category"
-                data-category="productivity">
-                ⚡ Productivity
-            </button>
-
-        </div>
-
-
-        <!-- TOOLS GRID -->
-        <div class="tools-grid">
-
-
-            <!-- AI CHAT -->
-            <div
-                class="tool-box"
-                data-category="chat"
-                data-name="AI Chat">
-
-                <div class="tool-top">
-
-                    <div class="tool-icon">
-                        🤖
-                    </div>
-
-                    <span class="tool-tag">
-                        CHAT
-                    </span>
-
+                <div class="branch-icon">
+                    &lt;/&gt;
                 </div>
 
                 <h2>
-                    AI Chat
+                    CODING
                 </h2>
 
                 <p>
-                    AI assistants for learning,
-                    writing, brainstorming and ideas.
+                    Learn coding, websites,
+                    programming and technology.
                 </p>
 
-                <a
-                    href="chat.html"
-                    class="tool-open">
-                    Explore Tool →
-                </a>
+                <span class="branch-arrow">
+                    COMING SOON
+                </span>
 
             </div>
 
 
-            <!-- AI IMAGE -->
-            <div
-                class="tool-box"
-                data-category="image"
-                data-name="AI Image">
+            <!-- PROJECTS -->
+            <div class="branch-card">
 
-                <div class="tool-top">
+                <div class="branch-number">
+                    03
+                </div>
 
-                    <div class="tool-icon">
-                        🎨
-                    </div>
-
-                    <span class="tool-tag">
-                        IMAGE
-                    </span>
-
+                <div class="branch-icon">
+                    PX
                 </div>
 
                 <h2>
-                    AI Image
+                    PROJECTS
                 </h2>
 
                 <p>
-                    Generate creative images,
-                    designs and visual content
-                    with AI.
+                    Discover creative projects
+                    built with technology and AI.
                 </p>
 
-                <a
-                    href="#"
-                    class="tool-open">
-                    Coming Soon →
-                </a>
+                <span class="branch-arrow">
+                    COMING SOON
+                </span>
 
             </div>
 
 
-            <!-- AI VIDEO -->
-            <div
-                class="tool-box"
-                data-category="video"
-                data-name="AI Video">
+            <!-- AI TOOLS -->
+            <div class="branch-card">
 
-                <div class="tool-top">
+                <div class="branch-number">
+                    04
+                </div>
 
-                    <div class="tool-icon">
-                        🎬
-                    </div>
-
-                    <span class="tool-tag">
-                        VIDEO
-                    </span>
-
+                <div class="branch-icon">
+                    TX
                 </div>
 
                 <h2>
-                    AI Video
+                    AI TOOLS
                 </h2>
 
                 <p>
-                    Create cinematic videos,
-                    shorts and creative content
-                    using AI.
+                    Useful AI tools and resources
+                    for creators and learners.
                 </p>
 
-                <a
-                    href="#"
-                    class="tool-open">
-                    Coming Soon →
-                </a>
+                <span class="branch-arrow">
+                    COMING SOON
+                </span>
 
             </div>
 
-
-            <!-- AI PRODUCTIVITY -->
-            <div
-                class="tool-box"
-                data-category="productivity"
-                data-name="AI Productivity">
-
-                <div class="tool-top">
-
-                    <div class="tool-icon">
-                        ⚡
-                    </div>
-
-                    <span class="tool-tag">
-                        PRODUCTIVITY
-                    </span>
-
-                </div>
-
-                <h2>
-                    AI Productivity
-                </h2>
-
-                <p>
-                    Automate tasks, organize work
-                    and become more productive
-                    with AI.
-                </p>
-
-                <a
-                    href="#"
-                    class="tool-open">
-                    Coming Soon →
-                </a>
-
-            </div>
-
-        </div>
+        </section>
 
 
-        <div id="noResults">
-            NO AI TOOL FOUND_
-        </div>
+        <a href="index.html" class="back-link">
+            ← BACK TO HOME
+        </a>
 
     </main>
 
@@ -305,5 +191,4 @@
     <script src="script.js"></script>
 
 </body>
-
 </html>
