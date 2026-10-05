@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AI Tools | AI.blog_</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- MATRIX BACKGROUND -->
+    <canvas id="matrix"></canvas>
+
+
+    <!-- DIGITAL DOOR INTRO -->
+    <div class="branch-door">
+
+        <div class="branch-door-left"></div>
+
+        <div class="branch-door-right"></div>
+
+        <div class="branch-door-text">
+            ACCESSING AI...
+        </div>
+
+    </div>
+
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+
+        <div class="logo">
+            AI.blog_
+        </div>
+
+        <div class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="tools.html">
+                AI Tools
+            </a>
+
+            <a href="tools.html">
+                Blogs
+            </a>
+
+            <a href="index.html">
+                About
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- TOOLS PAGE -->
+    <main class="tools-page">
+
+
+        <div class="tools-header">
+
+            <div class="hero-badge">
+                ⚡ AI SYSTEM ACCESS
+            </div>
+
+            <h1>
+                AI
+                <span>
+                    Tools_
+                </span>
+            </h1>
+
+            <p>
+                Discover powerful AI tools for
+                creativity, productivity, learning
+                and digital business.
+            </p>
+
+        </div>
+
+
+        <!-- SEARCH -->
+        <div class="tools-search">
+
+            <span>
+                ⌕
+            </span>
+
+            <input
+                type="text"
+                id="toolSearch"
+                placeholder="Search AI tools..."
+            >
+
+        </div>
+
+
+        <!-- CATEGORIES -->
+        <div class="tool-categories">
+
+            <button
+                class="category active"
+                data-category="all">
+                All
+            </button>
+
+            <button
+                class="category"
+                data-category="chat">
+                🤖 Chat
+            </button>
+
+            <button
+                class="category"
+                data-category="image">
+                🎨 Image
+            </button>
+
+            <button
+                class="category"
+                data-category="video">
+                🎬 Video
+            </button>
+
+            <button
+                class="category"
+                data-category="productivity">
+                ⚡ Productivity
+            </button>
+
+        </div>
+
+
+        <!-- TOOLS GRID -->
+        <div class="tools-grid">
+
+
+            <!-- AI CHAT -->
+            <div
+                class="tool-box"
+                data-category="chat"
+                data-name="AI Chat">
+
+                <div class="tool-top">
+
+                    <div class="tool-icon">
+                        🤖
+                    </div>
+
+                    <span class="tool-tag">
+                        CHAT
+                    </span>
+
+                </div>
+
+                <h2>
+                    AI Chat
+                </h2>
+
+                <p>
+                    AI assistants for learning,
+                    writing, brainstorming and ideas.
+                </p>
+
+                <a
+                    href="chat.html"
+                    class="tool-open">
+                    Explore Tool →
+                </a>
+
+            </div>
+
+
+            <!-- AI IMAGE -->
+            <div
+                class="tool-box"
+                data-category="image"
+                data-name="AI Image">
+
+                <div class="tool-top">
+
+                    <div class="tool-icon">
+                        🎨
+                    </div>
+
+                    <span class="tool-tag">
+                        IMAGE
+                    </span>
+
+                </div>
+
+                <h2>
+                    AI Image
+                </h2>
+
+                <p>
+                    Generate creative images,
+                    designs and visual content
+                    with AI.
+                </p>
+
+                <a
+                    href="#"
+                    class="tool-open">
+                    Coming Soon →
+                </a>
+
+            </div>
+
+
+            <!-- AI VIDEO -->
+            <div
+                class="tool-box"
+                data-category="video"
+                data-name="AI Video">
+
+                <div class="tool-top">
+
+                    <div class="tool-icon">
+                        🎬
+                    </div>
+
+                    <span class="tool-tag">
+                        VIDEO
+                    </span>
+
+                </div>
+
+                <h2>
+                    AI Video
+                </h2>
+
+                <p>
+                    Create cinematic videos,
+                    shorts and creative content
+                    using AI.
+                </p>
+
+                <a
+                    href="#"
+                    class="tool-open">
+                    Coming Soon →
+                </a>
+
+            </div>
+
+
+            <!-- AI PRODUCTIVITY -->
+            <div
+                class="tool-box"
+                data-category="productivity"
+                data-name="AI Productivity">
+
+                <div class="tool-top">
+
+                    <div class="tool-icon">
+                        ⚡
+                    </div>
+
+                    <span class="tool-tag">
+                        PRODUCTIVITY
+                    </span>
+
+                </div>
+
+                <h2>
+                    AI Productivity
+                </h2>
+
+                <p>
+                    Automate tasks, organize work
+                    and become more productive
+                    with AI.
+                </p>
+
+                <a
+                    href="#"
+                    class="tool-open">
+                    Coming Soon →
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div id="noResults">
+            NO AI TOOL FOUND_
+        </div>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
